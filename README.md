@@ -85,4 +85,4 @@ GPLv2 or later — see [LICENSE](https://www.gnu.org/licenses/gpl-2.0.html)
 
 ---
 
-© <?php echo date('Y'); ?> BIT_on_Tech™ • Simplified Tech of Tomorrow • All rights reserved • [bitveil.dk](https://bitveil.dk)
+Copyright © <?php echo date('Y'); ?> BIT_on_Tech™ • Simplified Tech of Tomorrow • [bitveil.dk](https://bitveil.dk)
