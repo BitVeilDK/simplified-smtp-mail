@@ -1,0 +1,90 @@
+name: Auto Bump, POT, Release on "new release" commit
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  bump-pot-release:
+    runs-on: ubuntu-latest
+
+    if: contains(github.event.head_commit.message, 'new release')
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get last commit summary
+        id: last_commit
+        run: |
+          git log -1 --pretty=%B | head -n 1 > commit_msg.txt
+          summary=$(cat commit_msg.txt)
+          summary="${summary//\"/\\\"}"
+          echo "COMMIT_SUMMARY=$summary" >> $GITHUB_ENV
+
+      - name: Get current version from plugin header
+        id: get_version
+        run: |
+          version=$(grep "^Version: " simplified-smtp-mail.php | awk '{print $2}')
+          echo "CURRENT_VERSION=$version" >> $GITHUB_ENV
+
+      - name: Bump patch version
+        id: bump_version
+        run: |
+          version=${{ env.CURRENT_VERSION }}
+          major_minor=$(echo $version | cut -d. -f1,2)
+          patch=$(echo $version | cut -d. -f3)
+          if [ -z "$patch" ]; then patch=0; fi
+          patch=$((patch+1))
+          new_version="${major_minor}.${patch}"
+          echo "NEW_VERSION=$new_version" >> $GITHUB_ENV
+
+      - name: Update plugin header & readme.txt
+        run: |
+          sed -i "s/^Version: .*/Version: $NEW_VERSION/" simplified-smtp-mail.php
+          sed -i "s/^Stable tag: .*/Stable tag: $NEW_VERSION/" readme.txt
+
+      - name: Set up PHP & Composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Install WP-CLI
+        run: curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x wp-cli.phar && sudo mv wp-cli.phar /usr/local/bin/wp
+
+      - name: Generate/Update .pot file
+        run: |
+          mkdir -p languages
+          wp i18n make-pot . languages/simplified-smtp-mail.pot --exclude=tests,node_modules,vendor
+
+      - name: Update Changelog in readme.md
+        run: |
+          summary="${{ env.COMMIT_SUMMARY }}"
+          version="${{ env.NEW_VERSION }}"
+          date=$(date +"%Y-%m-%d")
+          changelog="#### $version ($date)\n- $summary\n\n"
+          awk -v insert="$changelog" '/^### 📝 Changelog/{print;print insert;next}1' README.md > tmp && mv tmp README.md
+
+      - name: Commit & Tag
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add simplified-smtp-mail.php readme.txt languages/simplified-smtp-mail.pot README.md
+          git commit -m "Auto bump to $NEW_VERSION: $COMMIT_SUMMARY [skip ci]"
+          git tag v$NEW_VERSION
+          git push origin main --tags
+        env:
+          NEW_VERSION: ${{ env.NEW_VERSION }}
+          COMMIT_SUMMARY: ${{ env.COMMIT_SUMMARY }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.NEW_VERSION }}
+          name: Simplified SMTP Mail v${{ env.NEW_VERSION }}
+          body: |
+            ${{ env.COMMIT_SUMMARY }}
+          files: |
+            simplified-smtp-mail.php
+            readme.txt
+            README.md
+            languages/simplified-smtp-mail.pot

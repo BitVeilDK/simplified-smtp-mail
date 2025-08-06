@@ -3,7 +3,7 @@
 Plugin Name: Simplified SMTP Mail
 Plugin URI: https://bitveil.dk/freecode/wp/plugins/simplified-smtp-mail/
 Description: Configures WordPress's built-in PHPMailer to send emails via SMTP. Should therefore be compatible with all plugins and themes.
-Version: 1.1
+Version: 1.49
 Author: BIT_on_Tech™
 Author URI: https://bitveil.dk
 License: GPLv2 or later
@@ -44,64 +44,58 @@ add_action('admin_init', function () {
 
 // === Settings Page ===
 function simplified_smtp_mail_settings_page() {
+    // Test To-adresse: Hent fra POST hvis sendt, ellers tom
+    $test_to = isset($_POST['test_mail_to']) ? sanitize_email($_POST['test_mail_to']) : '';
+
     ?>
     <div class="wrap">
-		<?php
-		$banner_url = plugins_url('assets/banner-772x250.png', __FILE__);
-		?>
-		<div style="display:flex;align-items:center;background:#101020;border-radius:14px;box-shadow:0 2px 12px #0003;margin-bottom:28px;min-height:84px;padding:0 20px;">
-		  <img src="<?php echo esc_attr($banner_url); ?>" alt="Simplified SMTP Mail" style="height:64px;width:auto;max-width:240px;border-radius:10px;margin-right:30px;">
+        <?php
+        $banner_url = plugins_url('assets/banner-772x250.png', __FILE__);
+        ?>
+        <div style="display:flex;align-items:center;background:#101020;border-radius:14px;box-shadow:0 2px 12px #0003;margin-bottom:28px;min-height:84px;padding:0 20px;">
+          <img src="<?php echo esc_attr($banner_url); ?>" alt="Simplified SMTP Mail" style="height:64px;width:auto;max-width:240px;border-radius:10px;margin-right:30px;">
 
-		  <div>
-			<p style="color:#eee;margin:0;font-size:1rem;line-height:1;">
-			  Configure secure and reliable SMTP email for WordPress.<br>
-			  No bloat, no nonsense – just compatibility.<br>
-			  <a href="https://bitveil.dk/freecode/wp/plugins/simplified-smtp-mail/"
-				 style="color:#00dcff;text-decoration:underline;font-size:1rem;" target="_blank">
-				Plugin homepage &amp; documentation
-			  </a>
-			</p>
-		  </div>
-		</div>
+          <div>
+            <p style="color:#eee;margin:0;font-size:1rem;line-height:1;">
+              Configure secure and reliable SMTP email for WordPress.<br>
+              No bloat, no nonsense – just compatibility.<br>
+              <a href="https://bitveil.dk/freecode/wp/plugins/simplified-smtp-mail/"
+                 style="color:#00dcff;text-decoration:underline;font-size:1rem;" target="_blank">
+                Plugin homepage &amp; documentation
+              </a>
+            </p>
+          </div>
+        </div>
 
-		<?php
-		if (isset($_POST['test_mail_submit'])) {
-			$to = get_option('smtp_mail_from_email');
-			$subject = __('Test Email from Simplified SMTP Mail', 'simplified-smtp-mail');
-			$message = __('This is a test email sent by the Simplified SMTP Mail plugin.', 'simplified-smtp-mail');
-			$headers = ['Content-Type: text/html; charset=UTF-8'];
-			$result = wp_mail($to, $subject, $message, $headers);
+        <?php
+        if (isset($_POST['test_mail_submit'])) {
+            $to = $test_to ?: get_option('smtp_mail_from_email');
+            $subject = __('Test Email from Simplified SMTP Mail', 'simplified-smtp-mail');
+            $message = __('This is a test email sent by the Simplified SMTP Mail plugin.', 'simplified-smtp-mail');
+            $headers = ['Content-Type: text/html; charset=UTF-8'];
+            $result = wp_mail($to, $subject, $message, $headers);
 
-			$notice_color = $result ? '#0fbb4f' : '#d72c34'; // grøn/rød
-			$icon = $result
-				? '<span style="font-size:1.3em;margin-right:10px;">✅</span>'
-				: '<span style="font-size:1.3em;margin-right:10px;">❌</span>';
-			$text = $result
-				? __('Test email sent successfully!', 'simplified-smtp-mail')
-				: __('Test email failed. Please check your settings.', 'simplified-smtp-mail');
-			echo '<div id="ssm-notice" style="margin:16px 0 24px 0;padding:14px 20px;background:#181f16;border-radius:8px;display:flex;align-items:center;box-shadow:0 2px 12px #0002;transition:opacity 0.6s;">
-					<div style="width:6px;height:40px;background:' . $notice_color . ';border-radius:3px;margin-right:18px;"></div>
-					<div style="color:' . $notice_color . ';font-weight:600;font-size:1.15em;display:flex;align-items:center;">'
-						. $icon . $text .
-					'</div>
-				</div>
-				<script>
-				  setTimeout(function(){
-					var notice = document.getElementById("ssm-notice");
-					if(notice){ notice.style.opacity = "0"; setTimeout(function(){ notice.remove(); }, 600); }
-				  }, 5000);
-				</script>';
-		}
-		?>
-
-
-
-
-
-
-
-
-
+            $notice_color = $result ? '#0fbb4f' : '#d72c34'; // grøn/rød
+            $icon = $result
+                ? '<span style="font-size:1.3em;margin-right:10px;">✅</span>'
+                : '<span style="font-size:1.3em;margin-right:10px;">❌</span>';
+            $text = $result
+                ? __('Test email sent successfully!', 'simplified-smtp-mail')
+                : __('Test email failed. Please check your settings.', 'simplified-smtp-mail');
+            echo '<div id="ssm-notice" style="margin:16px 0 24px 0;padding:14px 20px;background:#181f16;border-radius:8px;display:flex;align-items:center;box-shadow:0 2px 12px #0002;transition:opacity 0.6s;">
+                    <div style="width:6px;height:40px;background:' . $notice_color . ';border-radius:3px;margin-right:18px;"></div>
+                    <div style="color:' . $notice_color . ';font-weight:600;font-size:1.15em;display:flex;align-items:center;">'
+                        . $icon . $text .
+                    '</div>
+                </div>
+                <script>
+                  setTimeout(function(){
+                    var notice = document.getElementById("ssm-notice");
+                    if(notice){ notice.style.opacity = "0"; setTimeout(function(){ notice.remove(); }, 600); }
+                  }, 5000);
+                </script>';
+        }
+        ?>
 
         <h1><?php _e('Simplified SMTP Mail', 'simplified-smtp-mail'); ?></h1>
         <form method="post" action="options.php">
@@ -130,11 +124,21 @@ function simplified_smtp_mail_settings_page() {
             <?php submit_button(__('Save Changes', 'simplified-smtp-mail')); ?>
         </form>
         <form method="post">
+            <table class="form-table" style="margin-top:18px;">
+                <tr>
+                    <th scope="row"><?php _e('Test To Email (optional)', 'simplified-smtp-mail'); ?></th>
+                    <td>
+                        <input type="email" name="test_mail_to" value="<?php echo esc_attr($test_to); ?>" class="regular-text" placeholder="<?php echo esc_attr(get_option('smtp_mail_from_email')); ?>">
+                        <br><span style="color:#aaa;font-size:0.96em;"><?php _e('If empty, the test will be sent to the "From Email" address above.', 'simplified-smtp-mail'); ?></span>
+                    </td>
+                </tr>
+            </table>
             <p><input type="submit" name="test_mail_submit" class="button" value="<?php _e('Send Test Email', 'simplified-smtp-mail'); ?>"></p>
         </form>
     </div>
     <?php
 }
+
 
 // === Use WordPress' PHPMailer and configure it ===
 add_action('phpmailer_init', function ($phpmailer) {

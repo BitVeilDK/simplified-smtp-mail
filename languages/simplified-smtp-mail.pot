@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Simplified SMTP Mail 1.4\n"
+"Project-Id-Version: Simplified SMTP Mail 1.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-06\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -76,3 +76,10 @@ msgstr ""
 msgid "Test email failed. Please check your settings."
 msgstr ""
 
+#: simplified-smtp-mail.php
+msgid "Test To Email (optional)"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "If empty, the test will be sent to the \"From Email\" address above."
+msgstr ""

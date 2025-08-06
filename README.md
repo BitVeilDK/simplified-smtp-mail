@@ -74,12 +74,18 @@ If you experience issues or want to suggest features, please reach out via [GitH
 ---
 
 ### 📦 GitHub Badges & Resources
+![GPLv2 License](https://img.shields.io/badge/license-GPLv2%2B-green)
 [![GitHub release](https://img.shields.io/github/v/release/BitVeilDK/simplified-smtp-mail)](https://github.com/BitVeilDK/simplified-smtp-mail/releases)
 [![Code size](https://img.shields.io/github/languages/code-size/BitVeilDK/simplified-smtp-mail)](https://github.com/BitVeilDK/simplified-smtp-mail)
 ![WordPress Tested](https://img.shields.io/badge/WordPress-6.8.2-blue)
-![GPLv2 License](https://img.shields.io/badge/license-GPLv2%2B-green)
 [![GitHub issues](https://img.shields.io/github/issues/BitVeilDK/simplified-smtp-mail)](https://github.com/BitVeilDK/simplified-smtp-mail/issues)
 [![GitHub stars](https://img.shields.io/github/stars/BitVeilDK/simplified-smtp-mail?style=social)](https://github.com/BitVeilDK/simplified-smtp-mail)
+[![Last commit](https://img.shields.io/github/last-commit/BitVeilDK/simplified-smtp-mail)](https://github.com/BitVeilDK/simplified-smtp-mail/commits/main)
+[![Pull requests](https://img.shields.io/github/issues-pr/BitVeilDK/simplified-smtp-mail)](https://github.com/BitVeilDK/simplified-smtp-mail/pulls)
+[![Discussions](https://img.shields.io/badge/discussions-on-blue)](https://github.com/BitVeilDK/simplified-smtp-mail/discussions)
+[![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/simplified-smtp-mail)](https://wordpress.org/plugins/simplified-smtp-mail/)
+[![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/simplified-smtp-mail)](https://wordpress.org/plugins/simplified-smtp-mail/)
+[![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/r/simplified-smtp-mail)](https://wordpress.org/plugins/simplified-smtp-mail/)
 
 ---
 

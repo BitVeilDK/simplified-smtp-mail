@@ -1,8 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Simplified SMTP Mail 1.4\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-06\n"
+"Project-Id-Version: Simplified SMTP Mail 1.5\n"
+"POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -26,7 +25,7 @@ msgstr "Afsendernavn"
 
 #: simplified-smtp-mail.php
 msgid "From Email"
-msgstr "Afsender-e-mail"
+msgstr "Afsender e-mail"
 
 #: simplified-smtp-mail.php
 msgid "SMTP Host"
@@ -34,7 +33,7 @@ msgstr "SMTP-vært"
 
 #: simplified-smtp-mail.php
 msgid "SMTP User"
-msgstr "SMTP-bruger"
+msgstr "SMTP-brugernavn"
 
 #: simplified-smtp-mail.php
 msgid "SMTP Password"
@@ -78,4 +77,12 @@ msgstr "Test-e-mail sendt!"
 
 #: simplified-smtp-mail.php
 msgid "Test email failed. Please check your settings."
-msgstr "Test-e-mail mislykkedes. Tjek venligst dine indstillinger."
+msgstr "Test-e-mail mislykkedes. Kontroller dine indstillinger."
+
+#: simplified-smtp-mail.php
+msgid "Test To Email (optional)"
+msgstr "Modtager-e-mail (valgfri)"
+
+#: simplified-smtp-mail.php
+msgid "If empty, the test will be sent to the \"From Email\" address above."
+msgstr "Hvis tomt, sendes testen til 'Afsender e-mail' ovenfor."
