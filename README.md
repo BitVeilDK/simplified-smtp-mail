@@ -1,3 +1,10 @@
+# Simplified SMTP Mail
+
+![WordPress Tested](https://img.shields.io/badge/WordPress-6.8.2-blue)
+![GPLv2 License](https://img.shields.io/badge/license-GPLv2%2B-green)
+[![GitHub issues](https://img.shields.io/github/issues/BitVeilDK/simplified-smtp-mail)](https://github.com/BitVeilDK/simplified-smtp-mail/issues)
+[![GitHub stars](https://img.shields.io/github/stars/BitVeilDK/simplified-smtp-mail?style=social)](https://github.com/BitVeilDK/simplified-smtp-mail)
+
 ## Simplified SMTP Mail
 
 A lightweight and compatible WordPress plugin that configures WordPress's built-in PHPMailer to use SMTP for sending emails. Compatible with all plugins and themes using `wp_mail()`.
