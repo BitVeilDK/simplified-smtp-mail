@@ -1,0 +1,78 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Simplified SMTP Mail 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-06\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+
+#: simplified-smtp-mail.php
+msgid "SMTP Mail"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "Settings"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "From Name"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "From Email"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "SMTP Host"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "SMTP User"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "SMTP Password"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "SMTP Port"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "Encryption"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "SSL"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "TLS"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "Save Changes"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "Send Test Email"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "Test Email from Simplified SMTP Mail"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "This is a test email sent by the Simplified SMTP Mail plugin."
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "Test email sent successfully!"
+msgstr ""
+
+#: simplified-smtp-mail.php
+msgid "Test email failed. Please check your settings."
+msgstr ""
+
