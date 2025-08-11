@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Simplified SMTP Mail 1.5\n"
+"Project-Id-Version: Simplified SMTP Mail 1.5.1\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"

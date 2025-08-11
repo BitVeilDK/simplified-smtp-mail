@@ -3,7 +3,7 @@
 Plugin Name: Simplified SMTP Mail
 Plugin URI: https://bitveil.dk/freecode/wp/plugins/simplified-smtp-mail/
 Description: Configures WordPress's built-in PHPMailer to send emails via SMTP. Should therefore be compatible with all plugins and themes.
-Version: 1.49
+Version: 1.5.1
 Author: BIT_on_Tech™
 Author URI: https://bitveil.dk
 License: GPLv2 or later

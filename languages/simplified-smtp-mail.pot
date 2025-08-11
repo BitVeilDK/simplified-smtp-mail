@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Simplified SMTP Mail 1.5\n"
+"Project-Id-Version: Simplified SMTP Mail 1.5.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-06\n"
 "Content-Type: text/plain; charset=UTF-8\n"

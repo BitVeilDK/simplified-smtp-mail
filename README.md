@@ -57,6 +57,13 @@ If you experience issues or want to suggest features, please reach out via [GitH
 ---
 
 ### 📝 Changelog
+
+#### 1.5.1
+- 🔧 Extended version numbering and removed GitHub auto action
+
+#### 1.5
+- 📧 Enhance SMTP Mail plugin UI and PHPMailer config
+
 #### 1.4
 - 🔧 Improved default port handling (cast to integer)
 - 🤝 Improved mail config compatibility with WordPress options
